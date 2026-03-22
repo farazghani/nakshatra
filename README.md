@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nakshatra — Vedic AI Astrologer
 
-## Getting Started
+A purpose-built AI chatbot that delivers personalised Vedic (Jyotish) astrology readings through the persona of an ancient mystical sage.
 
-First, run the development server:
+## What I Built
 
+Nakshatra is a conversational astrology app where users enter their birth details (name, date, time, place) and receive deeply personalised Vedic readings. The bot — named Jyotish — speaks with the voice of an ancient sage, referencing Nakshatras, Dashas, Grahas, and Yogas grounded in the user's actual birth data.
+
+The birth location is geocoded via OpenStreetMap's Nominatim API to extract precise latitude and longitude, which is passed to the model so planetary calculations are grounded in real coordinates rather than hallucinated.
+
+## Why Vedic Astrology
+
+Vedic (Jyotish) astrology is one of the oldest knowledge systems in the world, with a rich, structured framework — 27 Nakshatras, 9 Grahas, 12 Bhavas, Vimshottari Dasha cycles, and dozens of Yogas. This made it ideal for a purpose-built chatbot: the knowledge base is deep, the vocabulary is distinctive, and the persona writes itself.
+
+## Tech Stack
+
+- **Next.js 14** (App Router)
+- **TypeScript**
+- **Tailwind CSS** + **shadcn/ui** (Radix)
+- **OpenRouter API** (LLM routing)
+- **Nominatim / OpenStreetMap** (birth place geocoding)
+- **Vercel** (deployment)
+
+## Features
+
+- Onboarding screen collects birth details before the chat begins
+- Birth place geocoded to real coordinates for grounded readings
+- Streaming responses with a "Consulting the stars…" thinking indicator
+- Suggested questions on empty state
+- Zodiac sign + Nakshatra badge in the header derived from birth date
+- Fully dark cosmic UI — stars, deep navy, gold accents, Cinzel serif headings
+- Responsive on mobile and desktop
+- Markdown rendering for structured responses
+
+## Running Locally
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/nakshatra-gpt
+cd nakshatra-gpt
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create `.env.local`:
+```
+OPENROUTER_API_KEY=your_key_here
+```
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open [http://localhost:3000](http://localhost:3000)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment
 
-## Learn More
+Deployed on Vercel. Add `OPENROUTER_API_KEY` under Project Settings → Environment Variables.
 
-To learn more about Next.js, take a look at the following resources:
+## AI Tools Used
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built with Claude , using iterative prompting to scaffold, debug, and refine. The Loom walkthrough covers how I directed the AI, reviewed outputs, and made decisions throughout the build.
